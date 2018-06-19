@@ -1,0 +1,15 @@
+#home{
+    text-align: left;
+    position: absolute;
+    font-size: 20px;
+}
+#navright{
+    text-align: right;
+    position: relative;
+    margin-right: 40px;
+}
+.but{
+    text-align: center;
+    margin-top: 10%;
+    height: 100px;
+}

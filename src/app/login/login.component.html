@@ -1,0 +1,70 @@
+<div class="">
+  <div class="row">
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+      <mat-card style="margin-top: 60px">
+         <div class="topform"><span style="    text-align: center;
+            color: white;
+            font-size: 50px;
+            font-weight: bold;">HIT Club</span></div>
+        <!-- <h2 style="text-align: center;color: orangered;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: bold">Câu lạc bộ Tin học HIT</h2> -->
+        <mat-tab-group style="position: relative;
+        top: -40px;">
+          <mat-tab label="Đăng nhập">
+            <form [formGroup] = 'formLogin'  class="login" (submit) = 'Login();'>
+              <mat-form-field>
+                  <input matInput placeholder="Mã Sinh viên" value="" name="masv" formControlName ='studentId' > 
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <input  matInput placeholder="Mật khẩu" [type]="hide ? 'password' : 'text'" name="mk" formControlName = 'pass'>
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+              </mat-form-field>
+              <br>
+              <button mat-raised-button [disabled] = 'formLogin.invalid' >Đăng nhập</button>
+            </form>
+          </mat-tab>
+          <mat-tab label="Đăng kí" >
+            <form  class="signup" [formGroup] = 'formSignUp'>
+              <mat-form-field>
+                <input   matInput placeholder="Mã Sinh viên" value="" name = "studentId" formControlName = 'studentId'>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <input  matInput placeholder="Tên sinh viên" value="" name = "name" formControlName = 'name'>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <input  matInput placeholder="Số điện thoại" value="" name = "phone" formControlName = 'phone'>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <input  matInput placeholder="Email" type="email" value="" name = "email" formControlName = 'email'>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <input  matInput [matDatepicker]="picker" placeholder="Ngày sinh " name="birthDate" formControlName = 'birthDate'>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <br>
+
+              <mat-form-field>
+                <input  matInput placeholder="Mật khẩu" [type]="hide ? 'password' : 'text'" name="pass" formControlName = 'pass'>
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <input  matInput placeholder="Nhập lại mật khẩu" [type]="hide ? 'password' : 'text'" name = 'repass' formControlName ='repass'>
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+              </mat-form-field>
+              <br>
+              <button (click) = "SignUp();" [disabled]= "formSignUp.invalid" mat-raised-button>Đăng kí</button>
+            </form>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card>
+    </div>
+  </div>
+</div>

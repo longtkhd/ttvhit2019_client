@@ -1,0 +1,55 @@
+<mat-card>
+  <span id="home">Quản trị (HIT) </span>
+  <div id="navright">
+    <button mat-button [matMenuTriggerFor]="menu">Tùy chọn</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Thông tin cá nhân</button>
+      <button mat-menu-item (click)="LogOut();">Đăng xuất({{name}})</button>
+    </mat-menu>
+  </div>
+</mat-card>
+
+
+<div class="row">
+  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+    <div style="margin:10px">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Quản trị hệ thống
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <ul>
+            <li>
+              <a routerLink="/admin/user">
+                <i class="fa fa-users"></i>
+                Quản lí người dùng</a>
+            </li>
+          </ul>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Quản trị câu hỏi
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <ul>
+            <li>
+              <a routerLink="/admin/user">
+                <i class="fa fa-users"></i>
+                Quản lí người dùng</a>
+            </li>
+          </ul>
+    
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+
+  <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+    <mat-card id="scollbar" style="margin: 10px;margin-left: 0px;height: 84vh">
+      <router-outlet></router-outlet>
+    </mat-card>
+  </div>
+</div>
