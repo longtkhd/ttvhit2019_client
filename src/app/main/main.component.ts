@@ -32,13 +32,13 @@ export class MainComponent implements OnInit {
                 .then(res => {
                     if (res.code == 1) {
                         let role = localStorage.getItem('role');
-                        if (role === 'admin'&&this.checkRole()) {
+                        if (role === 'admin' && this.checkRole()) {
                             this.router.navigate(['admin']);
-                        }else if(role=='user'&&this.checkRole()) {
+                        } else if (role == 'user' && this.checkRole()) {
                             this.router.navigate(['']);
-                        }else{
+                        } else {
                             localStorage.removeItem('token');
-                         this.router.navigate(['login']);
+                            this.router.navigate(['login']);
                         }
                     } else {
                         localStorage.removeItem('token');
@@ -52,37 +52,42 @@ export class MainComponent implements OnInit {
         } else {
             this.router.navigate(['login']);
         }
-        
+
     }
     //Đăng xuất
     LogOut() {
         let token = localStorage.getItem('token');
         if (token) {
-           if(this.socket){
-            this.socket.disconnect();
-               this.socket.onDisconnect().subscribe(result=>{
-               });
-           }
+            if (this.socket) {
+                this.socket.disconnect();
+                this.socket.onDisconnect().subscribe(result => {
+                });
+            }
             localStorage.removeItem('token');
             this.router.navigate(['login']);
         }
     }
     //Bắt đầu thi
-     Start() {
+    Start() {
         //do something
         this.start = !this.start;
         this.socket = new SocketService();
     }
-    checkRole(){
+    checkRole() {
         this.md5 = new Md5();
         this.studentId = localStorage.getItem('studentId');
         this.session = sessionStorage.getItem('session');
-        let s = this.md5.appendStr(this.role+this.studentId).end();
-        if(this.session==s){
+        let s = this.md5.appendStr(this.role + this.studentId).end();
+        if (this.session == s) {
             return true;
         }
-        else{
+        else {
+            localStorage.removeItem('user');
+            localStorage.removeItem('role');
+            localStorage.removeItem('studentId');
+            localStorage.removeItem('name');
             return false;
         }
     }
+
 }

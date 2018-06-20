@@ -71,6 +71,12 @@ export class UserService {
       .then(res=>res.json())
       .catch(this.handleError);
   }
+  public GetUsers(page:number,limit:number,bol){
+      let url = this.heroesUrl + '/?page='+page+'&limit='+limit+'&filter='+bol;
+      return this.http.get(url,{headers:this.headers}).toPromise()
+      .then(res=>res.json())
+      .catch(this.handleError);
+  }
   public GetUserById (studentId:string){
       let url = this.heroesUrl + '/'+studentId;
       return this.http.get(url,{headers:this.headers}).toPromise()

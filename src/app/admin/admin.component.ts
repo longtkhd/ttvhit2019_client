@@ -32,7 +32,9 @@ export class AdminComponent implements OnInit {
                     if (res.code == 1) {
                         let role = localStorage.getItem('role');
                         if (role === 'admin' && this.checkRole()) {
-                            this.router.navigate(['admin','user']);
+                        //    location.reload();
+                            // this.router.navigate(['admin','user']);
+                            
                         } else if (role == 'user' && this.checkRole()) {
                             this.router.navigate(['']);
                         } else {
@@ -75,6 +77,10 @@ export class AdminComponent implements OnInit {
             return true;
         }
         else{
+            localStorage.removeItem('user');
+            localStorage.removeItem('role');
+            localStorage.removeItem('studentId');
+            localStorage.removeItem('name');
             return false;
         }
     }

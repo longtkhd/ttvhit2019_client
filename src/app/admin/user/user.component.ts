@@ -26,9 +26,9 @@ export class UserComponent implements OnInit {
         this.user.GetAdmins().then(result => {
             this.dataSource =new MatTableDataSource<Object>(result.data); 
             this.dataSource.paginator = this.paginator;
-            console.log(this.paginator)
         })
     }
+   
     openDialog(title: string, content: string, studentId: string, callback: Function) {
         let dialogRef = this.dialog.open(QuestionDialog, {
             width: '250px',
@@ -60,7 +60,6 @@ export class UserComponent implements OnInit {
         if (comand == 'lock') {
             this.openDialog('Thông báo', 'Bạn có muốn thay đổi trạng thái người dùng ' + studentId, studentId, (result) => {
                 if (result == true) {
-                    console.log(result)
                     this.user.LockUser(studentId)
                         .then(reSultLock => {
                             if (reSultLock.code == 1) {

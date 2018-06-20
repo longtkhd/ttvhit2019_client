@@ -31,14 +31,29 @@
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              Quản trị câu hỏi
+              Quản trị phần thi
             </mat-panel-title>
           </mat-expansion-panel-header>
           <ul>
             <li>
-              <a routerLink="/admin/user">
+            <a routerLink="/admin/examinee">
                 <i class="fa fa-users"></i>
-                Quản lí người dùng</a>
+                Quản lí thí sinh</a>
+            </li>
+            <li>
+              <a routerLink="/admin/question">
+                <i class="fa fa-users"></i>
+                Quản lí câu hỏi</a>
+            </li>
+            <li>
+              <a routerLink="/admin/examinee">
+                <i class="fa fa-users"></i>
+                Quản lí problem</a>
+            </li>
+            <li>
+              <a routerLink="/admin/examinee">
+                <i class="fa fa-users"></i>
+                Quản lí danh sách câu hỏi</a>
             </li>
           </ul>
     
