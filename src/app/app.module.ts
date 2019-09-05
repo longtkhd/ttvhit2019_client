@@ -1,27 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, } from '@angular/core';
-import 'hammerjs';
+import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { MatterialModule } from './material/material.module';
-import { AppRoutingModule } from './app-routing.module';
-import { APIModule } from './services/service.module';
 import { HttpModule } from '@angular/http';
-import {FormsModule,ReactiveFormsModule} from '@angular/forms';
-import {MainModule} from './main/main.module'
-import { AdminModule } from './admin/admin.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { APIModule } from './services/service.module';
 import { CommonModule } from '@angular/common';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { ErrorPageComponent } from './error-page/error-page.component';
-import { JudgeComponent } from './judge/judge.component';
+import { MatterialModule } from './material/material.module';
+import { SocketService } from './socket';
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import 'hammerjs';
+import { QuestionDialogComponent } from './question-dialog/question-dialog.component';
+import { AdminGuardService } from './services/admin-guard.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    ErrorPageComponent,
-    JudgeComponent,
-  ],
+  declarations: [AppComponent, LoginComponent],
+  // tslint:disable-next-line:max-line-length
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -31,11 +27,11 @@ import { JudgeComponent } from './judge/judge.component';
     APIModule,
     FormsModule,
     ReactiveFormsModule,
-    AdminModule,
-    MainModule,
     AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [SocketService, AdminGuardService],
+  bootstrap: [AppComponent],
+  exports: [MatterialModule]
 })
-export class AppModule { }
+export class AppModule {}

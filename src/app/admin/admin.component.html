@@ -1,70 +1,67 @@
-<mat-card>
-  <span id="home">Quản trị (HIT) </span>
-  <div id="navright">
-    <button mat-button [matMenuTriggerFor]="menu">Tùy chọn</button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>Thông tin cá nhân</button>
-      <button mat-menu-item (click)="LogOut();">Đăng xuất({{name}})</button>
-    </mat-menu>
-  </div>
-</mat-card>
+<div class="wrapper">
+  <mat-toolbar class="header-toolbar">
+    <div style="width: 100%" class="row">
+      <div class="col-md-6">
+        <button mat-icon-button type="button" (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <h1 style="display: inline-block;" class="">Trang quản lý</h1>
+      </div>
+      <div class="col-md-6 text-right">
+        <button class="header-btn" mat-icon-button [matMenuTriggerFor]="menu">
+          <img class="logo-img mt-0" mat-card-image src="../../assets/images/logo-hit.png" alt="avatar">
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>account_circle</mat-icon>Thông tin tài khoản</button>
+          <button (click)="logOut()" mat-menu-item>
+            <mat-icon>power_settings_new
+            </mat-icon>Đăng xuát</button>
+        </mat-menu>
 
-
-<div class="row">
-  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-    <div style="margin:10px">
-      <mat-accordion>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Quản trị hệ thống
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <ul>
-            <li>
-              <a routerLink="/admin/user">
-                <i class="fa fa-users"></i>
-                Quản lí người dùng</a>
-            </li>
-          </ul>
-        </mat-expansion-panel>
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Quản trị phần thi
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <ul>
-            <li>
-            <a routerLink="/admin/examinee">
-                <i class="fa fa-users"></i>
-                Quản lí thí sinh</a>
-            </li>
-            <li>
-              <a routerLink="/admin/question">
-                <i class="fa fa-users"></i>
-                Quản lí câu hỏi</a>
-            </li>
-            <li>
-              <a routerLink="/admin/examinee">
-                <i class="fa fa-users"></i>
-                Quản lí problem</a>
-            </li>
-            <li>
-              <a routerLink="/admin/examinee">
-                <i class="fa fa-users"></i>
-                Quản lí danh sách câu hỏi</a>
-            </li>
-          </ul>
-    
-        </mat-expansion-panel>
-      </mat-accordion>
+      </div>
     </div>
-  </div>
+  </mat-toolbar>
+  <mat-drawer-container class="view-container" autosize>
+    <mat-drawer opened=true #drawer class="example-sidenav" mode="side">
+      <mat-list>
+        <h3 mat-subheader>Quản lý hệ thống</h3>
+        <mat-list-item routerLink="/admin/user-manager" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+          <mat-icon mat-list-icon>group</mat-icon>
+          <p class="mb-0 mx-2">Quản lý người dùng</p>
+        </mat-list-item>
+        <mat-list-item routerLink="/admin/competitive-manager" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+          <mat-icon mat-list-icon>style</mat-icon>
+          <p class="mb-0 mx-2">Quản lý thí sinh</p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 mat-subheader>Quản lý câu hỏi</h3>
 
-  <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-    <mat-card id="scollbar" style="margin: 10px;margin-left: 0px;height: 84vh">
+        <mat-list-item routerLink="/admin/question-manager" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+          <mat-icon mat-list-icon>storage</mat-icon>
+          <p class="mb-0 mx-2">Câu hỏi trắc nghiệm</p>
+        </mat-list-item>
+        <mat-list-item routerLink="/admin/question-list-manager" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+          <mat-icon mat-list-icon>storage</mat-icon>
+          <p class="mb-0 mx-2">DS câu hỏi trắc nghiệm</p>
+        </mat-list-item>
+        <mat-list-item routerLink="/admin/problem-manager" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+          <mat-icon mat-list-icon>code</mat-icon>
+          <p class="mb-0 mx-2">Câu hỏi lập trình</p>
+        </mat-list-item>
+      </mat-list>
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
       <router-outlet></router-outlet>
-    </mat-card>
-  </div>
+
+    </div>
+
+  </mat-drawer-container>
+  <mat-toolbar class="footer-toolbar">
+    <div style="width: 100%; color: white" class="footer-content">
+      <p class="mb-0 text-center">Phát triển bởi Đỗ Thắng & Nguyễn Thành Trung
+      </p>
+    </div>
+  </mat-toolbar>
 </div>

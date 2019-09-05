@@ -1,18 +1,47 @@
 import { NgModule } from '@angular/core';
-import { MatterialModule } from '../material/material.module';
-import {CommonModule} from '@angular/common'
-import { RoutingAdminModule } from './admin-routing.module';
-import { UserComponent ,QuestionDialog, NoteCom,UpdateDialog} from './user/user.component';
-import {ExamineeComponent, EditExaminee} from './examinee/examinee.component'
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
-import { FormsModule } from '@angular/forms';
-import { DialogQ } from './dialog.component';
-import { QuestionComponent, EditQuestion, AddQuestion } from './question/question.component';
+import { UserManagerComponent } from './user-manager/user-manager.component';
+import { QuestionManagerComponent } from './question-manager/question-manager.component';
+import { CompetitiveManagerComponent } from './competitive-manager/competitive-manager.component';
+import { MatterialModule } from '../material/material.module';
+import { QuestionDialogComponent } from '../question-dialog/question-dialog.component';
+import { EditCompetitiveDialogComponent } from './competitive-manager/edit-competitive-dialog/edit-competitive-dialog.component';
+import { EditAddDialogComponent } from './question-manager/question-dialog/question-dialog.component';
+import { EditUserDialogComponent } from './user-manager/edit-user-dialog/edit-user-dialog.component';
+import { ProblemManagerComponent } from './problem-manager/problem-manager.component';
+import { ProblemDialogComponent } from './problem-manager/problem-dialog/problem-dialog.component';
+import { QuestionListManagerComponent } from './question-list-manager.ts/question-list-manager.component';
+import { EditAddQuestionListDialogComponent } from './question-list-manager.ts/question-dialog/question-list-dialog.component';
 @NgModule({
-    imports: [ MatterialModule,CommonModule,FormsModule,RoutingAdminModule],
-    declarations: [UserComponent,AddQuestion,QuestionComponent,QuestionDialog,UpdateDialog,EditQuestion,EditExaminee,DialogQ,NoteCom,ExamineeComponent, AdminComponent],
-    exports: [],
-    providers: [],
-    entryComponents: [QuestionDialog,AddQuestion,DialogQ,UpdateDialog,NoteCom,EditExaminee,EditQuestion]
+  imports: [CommonModule, AdminRoutingModule, MatterialModule, FormsModule, ReactiveFormsModule],
+  // tslint:disable-next-line:max-line-length
+  declarations: [
+    AdminComponent,
+    UserManagerComponent,
+    QuestionManagerComponent,
+    CompetitiveManagerComponent,
+    QuestionDialogComponent,
+    EditCompetitiveDialogComponent,
+    EditAddDialogComponent,
+    EditUserDialogComponent,
+    ProblemManagerComponent,
+    ProblemDialogComponent,
+    QuestionListManagerComponent,
+    EditAddQuestionListDialogComponent
+  ],
+  exports: [QuestionDialogComponent],
+  // tslint:disable-next-line:max-line-length
+  entryComponents: [
+    QuestionDialogComponent,
+    EditCompetitiveDialogComponent,
+    EditUserDialogComponent,
+    QuestionDialogComponent,
+    EditAddDialogComponent,
+    ProblemDialogComponent,
+    EditAddQuestionListDialogComponent
+  ]
 })
-export class AdminModule { }
+export class AdminModule {}
